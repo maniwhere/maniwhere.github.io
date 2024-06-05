@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">
+.anticon {
+  display: inline-block;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.anticon > * {
+  line-height: 1;
+}
+
+.anticon svg {
+  display: inline-block;
+}
+
+.anticon::before {
+  display: none;
+}
+
+.anticon .anticon-icon {
+  display: block;
+}
+
+.anticon[tabindex] {
+  cursor: pointer;
+}
+
+.anticon-spin::before,
+.anticon-spin {
+  display: inline-block;
+  -webkit-animation: loadingCircle 1s infinite linear;
+  animation: loadingCircle 1s infinite linear;
+}
+
+@-webkit-keyframes loadingCircle {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loadingCircle {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+</style>
+		<title>Maniwhere</title>
+		
+		<meta name="viewport" content="width=1000">
+		<link rel="stylesheet" href="./maniwhere_files/main.css">
+		<!-- <link rel="icon" href="https://3d-diffusion-policy.github.io/images/icon_transparent.png" type="image/x-icon"> -->
+
+		<!-- Google tag (gtag.js) -->
+		<script async="" src="./maniwhere_files/js"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-7S6TEJTY63');
+		</script>
+
+		<meta property="og:url" content="https://maniwhere.github.io">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Maniwhere">
+		<meta property="og:description" content="This paper introduces Maniwhere, a visual generalizable framework for reinforcement learning.">
+	
+	<link rel="stylesheet" href="./maniwhere_files/academicons.min.css"><link rel="stylesheet" href="./maniwhere_files/all.min.css"></head>
+	
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+	
+	<body id="top" class="is-loading" data-new-gr-c-s-check-loaded="14.1141.0" data-gr-ext-installed="">
+
+		<header>
+			<h1 id="header-top" style="margin-top:400px">Maniwhere</h1>
+			<h2 style="color: rgba(255, 255, 255, 0.9); font-size:40px; margin-top:-30px">A Visual Generalizable Framework For Visual Reinforcement Learning</h2>
+			
+			<div class="buttons">
+				<a href="https://arxiv.org/abs/2403.03954"><div class="button"><i class="ai ai-arxiv"></i>&nbsp;&nbsp;arXiv</div></a>
+				<a href="https://arxiv.org/pdf/2403.03954.pdf"><div class="button"><svg class="svg-inline--fa fa-file-pdf fa-w-12 fa-lg" style="width: 20px; height: 20px; margin-top:0%" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 500" data-fa-i2svg=""><path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg>&nbsp;&nbsp;Paper</div></a>
+				<a href="https://github.com/YanjieZe/3D-Diffusion-Policy"><div class="button"><svg class="svg-inline--fa fa-github fa-w-16" style="width: 20px; height: 20px;" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 -50 484 500" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>&nbsp;&nbsp;Code</div></a>
+				<a href="https://x.com/ZeYanjie/status/1765414787775963232?s=20"><div class="button" style="padding-left:23px"> <i class="fa-brands fa-x-twitter"></i>&nbsp;Twitter</div></a>
+			</div>
+
+			<!-- <h2 style="color: rgba(255, 255, 255, 0.9); font-size:40px; margin-top:220px">Submit to CoRL 2024</h2> -->
+			
+		</header>
+
+	<main id="main-content">
+			<div style="padding-bottom:1em; padding-top: 5em; width: 60em; max-width: 70em; margin-left: auto; margin-right: auto;">
+					<section>
+
+						<h1 style="text-align: center; margin-bottom: 0; color: #27a2c3; font-size: 3.5em;">Maniwhere</h1>
+						<h2 style="text-align: center; color: #27a2c3;; font-size:30px; margin-top:-10px">A Visual Genralizable Framework For Visual Reinforcement Learning</h2>
+						<!-- <h2 style="text-align: center; white-space: nowrap; font-size: 200%">Mastering Visuomotor Policy Learning via 3D Diffusion Policy</h2> -->
+
+						<!-- <span class="image" style="width: 100%; margin-top: 0.5em; margin-bottom: 0;">
+							<img src="./DP3_files/teaser.svg" alt="">
+						</span> -->
+ 
+						<p> 
+						<b style="font-weight:900;">Abstract.</b>
+						Imitation learning provides an efficient way to teach robots dexterous skills; however, learning complex skills robustly and generalizablely usually consumes large amounts of human demonstrations. To tackle this challenging problem, we present <b style="font-weight:900;">3D Diffusion Policy (DP3)</b>, a novel visual imitation learning approach that incorporates the power of 3D visual representations into diffusion policies, a class of conditional action generative models. The core design of DP3 is the utilization of a compact 3D visual representation, extracted from sparse point clouds with an efficient point encoder.
+						In our experiments involving 72 simulation tasks, DP3 successfully handles most tasks with just 10 demonstrations and surpasses baselines with a 24.2% relative improvement. In 4 real robot tasks, DP3 demonstrates precise control with a high success rate of 85%, given only 40 demonstrations of each task, and shows excellent generalization abilities in diverse aspects, including space, viewpoint, appearance, and instance.  Interestingly, in real robot experiments, DP3 rarely violates <a href="https://3d-diffusion-policy.github.io/#safety">safety</a> requirements, in contrast to baseline methods which frequently do, necessitating human intervention. Our extensive evaluation highlights the critical importance of 3D representations in real-world robot learning.
+						</p>
+						<video autoplay="" controls="" muted="" loop="" style="width: 100%; margin-left: 0%;" preload="metadata"><source src="videos/teaser.mp4" type="video/mp4"> </video>
+
+						<!-- <hr style="margin-top: 1em;"> -->
+						<!-- <h2>Summary</h2> -->
+						<!-- <video controls="" muted="" style="width: 97.6%; margin-left: 0%;" preload="metadata"><source src="" type="video/mp4"> </video> -->
+						<!-- <div style="text-align: center;">
+							<iframe width="1120" height="630" src="https://www.youtube.com/embed/7e7BL98Thag?si=NFZQvjpRorLisjnK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>
+						</div> -->
+
+
+
+						<hr style="margin-top: 1em;">
+						<h2>Effectiveness &amp; Generalizability</h2>
+						<div class="box alt" style="margin-bottom: 1em;">
+							<p>
+								<b>Effectiveness.</b> We evaluate DP3 on 72 simulated tasks and 4 real-world tasks and observe that DP3 is able to achieve surprising effectiveness in diverse simulated and real-world tasks, including both high-dimensional and low-dimensional control tasks, with a practical inference speed.
+								Notably, for 67 out of 72 simulated tasks, we only use <b>10</b> demonstrations; for 4 challenging real-world tasks, we only use <b>40</b> demonstrations.
+								
+
+								</p><div class="row 50% uniform" style="width: 100%; margin-top:0px; margin-bottom:-1%">
+									<div class="2u" style="font-size: 0.9em; line-height: 1.5em; text-align: center; width: 68%">
+										<video autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/results/summary_results.mp4" type="video/mp4"> </video>
+									</div>
+									<div class="2u" style="font-size: 0.9em; line-height: 1.5em; text-align: center; width: 31%">
+										<video autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/results/summary_results2.mp4" type="video/mp4"> </video>
+									</div>
+								</div>
+
+							<p></p>
+							<p>
+								<b>Generalization with few data.</b> We use MetaWorld Reach as an example task, given only <span style="color:#fe7b5b ; font-size: 40px; vertical-align:-3.2px;">•</span> 5 demonstrations.
+								We evaluate 1000 times to cover the 3D space and visualize <span style="color:#27a2c3 ; font-size: 40px; vertical-align:-3.2px;">•</span> successful evaluation points.
+								<a href="https://yanjieze.com/DP3">DP3</a> learns the generalizable skill in 3D space;
+								<a href="https://diffusion-policy.cs.columbia.edu/">Diffusion Policy</a> and <a href="https://implicitbc.github.io/">IBC</a> only succeed in partial space; <a href="https://robomimic.github.io/">BCRNN</a> fails to learn such a simple skill with limited data.
+								Check out more <a href="https://3d-diffusion-policy.github.io/#Generalizability">generalization abilities</a> of DP3!
+							</p>
+							<div class="row 50% uniform" style="width: 100%; margin-top:-20px">
+								<div class="2u" style="font-size: 0.9em; line-height: 1.5em; text-align: center; width: 25%">
+									<video autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/motivating_example/bcrnn.mp4" type="video/mp4"> </video>
+									<a href="https://robomimic.github.io/">BCRNN</a>
+								</div>
+								<div class="2u" style="font-size: 0.9em; line-height: 1.5em; text-align: center; width: 25%">
+									<video autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;"><source src="videos/motivating_example/ibc.mp4" type="video/mp4"> </video>
+									<a href="https://implicitbc.github.io/">IBC</a>
+								</div>
+								<div class="2u" style="font-size: 0.9em; line-height: 1.5em; text-align: center; width: 25%">
+									<video autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;"><source src="videos/motivating_example/diffusion_policy.mp4" type="video/mp4"> </video>
+									<a href="https://diffusion-policy.cs.columbia.edu/">Diffusion Policy</a>
+								</div>
+								<div class="2u" style="font-size: 0.9em; line-height: 1.5em; text-align: center; width: 25%">
+									<video autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;"><source src="videos/motivating_example/dp3.mp4" type="video/mp4"> </video>
+									<a href="https://3d-diffusion-policy.github.io/">DP3</a> (ours)
+								</div>
+								
+							</div>
+
+							
+						
+						</div>
+						<hr style="margin-top: 1em;">
+						<h2>Method</h2>
+						<p>
+							DP3 perceives the environment through single-view point clouds. The sparsely sampled point clouds are encoded into compact 3D representations by a lightweight DP3 encoder. Subsequently, DP3 generates actions conditioning on these 3D representations and the robot states, using a diffusion model as the backbone.
+						</p>
+						<video autoplay="" muted="" loop="" playsinline="" style="width: 97.6%; margin-left: 0%; margin-top:-1%"><source src="videos/method.mp4" type="video/mp4"> </video>
+
+						
+						
+						<hr style="margin-top: 1em;">
+
+						<h2>Benchmark</h2>
+						<p>
+							To systematically evaluate the effectiveness and generalizability of DP3, We construct an imitation learning benchmark that consists of diverse simulated and real-world tasks. Both high-dimensional and low-dimensional control tasks are included in the benchmark.
+						</p>
+						<h3 style="margin-top: 2%;margin-bottom: 1%;">Real-World Tasks</h3>
+						<p>
+						Our real-world benchmark contains 4 challenging tasks: <a href="https://3d-diffusion-policy.github.io/#Task%201:%20Roll-Up">Roll-Up</a>, <a href="https://3d-diffusion-policy.github.io/#Task%202:%20Dumpling">Dumpling</a>, <a href="https://3d-diffusion-policy.github.io/#Task%203:%20Drill">Drill</a>, and <a href="https://3d-diffusion-policy.github.io/#Task%204:%20Pour">Pour</a>. The first three tasks use an Allegro Hand with 22 DoF and the last task uses a gripper with 7 DoF.
+						These tasks include diverse skills such as deformable object manipulation and tool using.
+						We visualize the 3D point clouds of the tasks and the corresponding robot demonstrations below.
+
+						</p>	
+
+						
+						<div class="box alt" style="margin-bottom: 0em;">
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 25%">
+									Roll-Up
+									<span style="margin-bottom: 0em;">
+										<video autoplay="" loop="" muted="" playsinline="" style="width: 100%;"><source src="videos/task_vis/rolling_3d.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 25%">
+									Dumpling
+									<span style="margin-bottom: 0em;">
+										<video autoplay="" loop="" muted="" playsinline="" style="width: 100%;"><source src="videos/task_vis/dumpling_3d.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 25%">
+									Drill
+									<span style="margin-bottom: 0em;">
+										<video autoplay="" loop="" muted="" playsinline="" style="width: 100%;"><source src="videos/task_vis/drill_3d.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 25%">
+									Pour
+									<span style="margin-bottom: 0em;">
+										<video autoplay="" loop="" muted="" playsinline="" style="width: 100%;"><source src="videos/task_vis/pour_3d.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="box alt" style="margin-bottom: 1em;">
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 25%">
+									<span style="margin-bottom: 0em;">
+										<video autoplay="" loop="" muted="" playsinline="" style="width: 100%;"><source src="videos/task_vis/rolling.mp4" type="video/mp4"> </video>
+									</span>
+									Wrap, wrap, wrap
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 25%">
+									<span style="margin-bottom: 0em;">
+										<video autoplay="" loop="" muted="" playsinline="" style="width: 100%;"><source src="videos/task_vis/dumpling.mp4" type="video/mp4"> </video>
+									</span>
+									Wrap and pinch
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 25%">
+									<span style="margin-bottom: 0em;">
+										<video autoplay="" loop="" muted="" playsinline="" style="width: 100%;"><source src="videos/task_vis/drill.mp4" type="video/mp4"> </video>
+									</span>
+									Grasp the drill and drill the cube
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 25%">
+									<span style="margin-bottom: 0em;">
+										<video autoplay="" loop="" muted="" playsinline="" style="width: 100%;"><source src="videos/task_vis/pour.mp4" type="video/mp4"> </video>
+									</span>
+									Pick, pour, and place back
+								</div>
+								
+								
+							</div>
+						</div>
+
+						
+
+
+	
+
+
+						
+						<hr style="margin-top: 1em;">
+
+						
+
+						<div class="row" style="margin-top: 1em">
+							<div class="12u$ 12u$(xsmall)">
+
+							</div>
+						</div>
+
+
+						<hr style="margin-top: 1em;">
+
+						<h2 id="Task 1: Roll-Up">Task 1: Roll-Up</h2>
+						<p>
+						In the Roll-Up task, the robot needs to wrap the plasticine multiple times to make a roll-up.
+						</p>
+
+						<div class="row 100% uniform" style="width: 100%;">
+							<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 100%">
+								<span class="image fit" style="margin-bottom: 0.5em;">
+									<video controls="" muted="" style="width: 100%; margin-left: 0%;" preload="metadata"><source src="videos/high_res/roll_robust_final.mp4" type="video/mp4"> </video>
+								</span>
+								High-resolution video of DP3
+							</div>
+						</div>
+						<div class="box alt" style="margin-bottom: 1em; margin-top:2em">
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls="" muted="" style="width: 100%;" preload="metadata"><source src="videos/main/roll/ours/success-1.mp4" type="video/mp4"> </video>
+									</span>
+									DP3
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls="" muted="" style="width: 100%;" preload="metadata"><source src="videos/main/roll/image/roll-image-fail1.mp4" type="video/mp4"> </video>
+									</span>
+									Diffusion Policy
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls="" muted="" style="width: 100%;" preload="metadata"><source src="videos/main/roll/depth/roll-depth-fail2.mp4" type="video/mp4"> </video>
+									</span>
+									Diffusion Policy (Depth)
+								</div>
+							</div>
+						</div>
+						<a href="https://3d-diffusion-policy.github.io/more_videos_roll.html">Clik here to see more videos of this task.</a>
+
+						<hr style="margin-top: 1em;">
+						<h2 id="Task 2: Dumpling">Task 2: Dumpling</h2>
+						<p>
+						In the Dumpling task, the robot needs to make a dumpling by wrapping and pinching the plasticine.
+						</p>
+						<div class="row 100% uniform" style="width: 100%;">
+							<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 100%">
+								<span class="image fit" style="margin-bottom: 0.5em;">
+									<video controls="" muted="" style="width: 100%; margin-left: 0%;" preload="metadata"><source src="videos/high_res/dumpling_final.mp4" type="video/mp4"> </video>
+								</span>
+								High-resolution video of DP3
+							</div>
+						</div>
+						<div class="box alt" style="margin-bottom: 1em; margin-top:2em">
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls="" muted="" style="width: 100%; margin-left: 0%;" preload="metadata"><source src="videos/main/dump/ours/dump_success6.mp4" type="video/mp4"> </video>
+									</span>
+									DP3
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls="" muted="" style="width: 100%;" preload="metadata"><source src="videos/main/dump/image/dump-image-fail2.mp4" type="video/mp4"> </video>
+									</span>
+									Diffusion Policy
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls="" muted="" style="width: 100%;" preload="metadata"><source src="videos/main/dump/depth/dump-depth-fail2.mp4" type="video/mp4"> </video>
+									</span>
+									Diffusion Policy (Depth)
+								</div>
+							</div>
+						</div>
+						<a href="https://3d-diffusion-policy.github.io/more_videos_dumpling.html">Clik here to see more videos of this task.</a>
+
+						<hr style="margin-top: 1em;">
+
+
+						<h2 id="Task 3: Drill">Task 3: Drill</h2>
+						<p>
+							In the Drill task, the robot needs to touch the cube with a drill.
+							</p>
+	
+							<div class="row 100% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 100%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls="" muted="" style="width: 100%; margin-left: 0%;" preload="metadata"><source src="videos/high_res/drill_robust_final.mp4" type="video/mp4"> </video>
+									</span>
+									High-resolution video of DP3
+								</div>
+							</div>
+							<div class="box alt" style="margin-bottom: 1em; margin-top:2em;">
+								<div class="row 50% uniform" style="width: 100%;">
+									<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+										<span class="image fit" style="margin-bottom: 0.5em;">
+											<video controls="" muted="" style="width: 100%;" preload="metadata"><source src="videos/main/drill/ours/success-2.mp4" type="video/mp4"> </video>
+										</span>
+										DP3
+									</div>
+									<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+										<span class="image fit" style="margin-bottom: 0.5em;">
+											<video controls="" muted="" style="width: 100%;" preload="metadata"><source src="videos/main/drill/image/drill-fail-4.mp4" type="video/mp4"> </video>
+										</span>
+										Diffusion Policy
+									</div>
+									<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+										<span class="image fit" style="margin-bottom: 0.5em;">
+											<video controls="" muted="" style="width: 100%;" preload="metadata"><source src="videos/main/drill/depth/drill-depth-fail2.mp4" type="video/mp4"> </video>
+										</span>
+										Diffusion Policy (Depth)
+									</div>
+
+								</div>
+							</div>
+						<a href="https://3d-diffusion-policy.github.io/more_videos_drill.html">Clik here to see more videos of this task.</a>
+
+						<hr style="margin-top: 1em;">
+
+						<h2 id="Task 4: Pour">Task 4: Pour</h2>
+						<p>
+							In the Pour task, the robot needs to pour out dried meat floss onto the plasticine.
+							</p>
+	
+							<div class="row 100% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 100%">
+									<span class="image fit" style="margin-bottom: 0.5em;">
+										<video controls="" muted="" style="width: 100%; margin-left: 0%;" preload="metadata"><source src="videos/high_res/pour_robust_final.mp4" type="video/mp4"> </video>
+									</span>
+									High-resolution video of DP3
+								</div>
+							</div>
+							<div class="box alt" style="margin-bottom: 1em; margin-top:2em">
+								<div class="row 50% uniform" style="width: 100%;">
+									<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+										<span class="image fit" style="margin-bottom: 0.5em;">
+											<video controls="" muted="" style="width: 100%;" preload="metadata"><source src="videos/main/pour/ours/pour-our-success-3.mp4" type="video/mp4"> </video>
+										</span>
+										DP3
+									</div>
+									<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+										<span class="image fit" style="margin-bottom: 0.5em;">
+											<video controls="" muted="" style="width: 100%;" preload="metadata"><source src="videos/main/pour/image/pour-image-fail-1.mp4" type="video/mp4"> </video>
+										</span>
+										Diffusion Policy
+									</div>
+									<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 33%">
+										<span class="image fit" style="margin-bottom: 0.5em;">
+											<video controls="" muted="" style="width: 100%;" preload="metadata"><source src="videos/main/pour/depth/depth-pour-fail-3.mp4" type="video/mp4"> </video>
+										</span>
+										Diffusion Policy (Depth)
+									</div>
+								</div>
+							</div>
+							<a href="https://3d-diffusion-policy.github.io/more_videos_pour.html">Clik here to see more videos of this task.</a>
+
+							<hr style="margin-top: 1em;">
+
+							<h2 id="Generalizability">Generalizability</h2>
+
+							DP3 shows strong generalization abilities in various aspects, including space, appearance, instance, and view.
+						
+							<h3 style="margin-top: 2%; margin-bottom: 1%;">Spatial Generalization</h3>
+							<p>DP3 could better extrapolate in 3D space.
+								We demonstrate this property in the real world, as shown below. We find that baselines fail to generalize to all test positions while DP3 succeed in 4 out of 5 trials.</p>
+
+							<img src="./maniwhere_files/spatial_generalization.png" alt="Results" style="width: 90%; margin-top: -1em; margin-left:8%;margin-bottom:2%">
+
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:10%">
+									<p style="margin-top: 60%;">DP3</p>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:18%">
+									1
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/1/ours/ood-4-ours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									2
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/2/ours/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									3
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/3/ours/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									4
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/4/ours/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									5
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/5/ours/ood-5-ours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:10%">
+									<p style="margin-top: 40%;">Diffusion Policy</p>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/1/image/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/2/image/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/3/image/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/4/image/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/5/image/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:10%">
+									<p style="margin-top: 30%;">Diffusion Policy (Depth)</p>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/1/depth/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/2/depth/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/3/depth/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/4/depth/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_spatial/5/depth/ood-5-depth.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+
+						
+							<h3 style="margin-top: 3%; margin-bottom: 1%;">Appearance Generalization</h3>
+							<p>
+								DP3 is designed to process point clouds without color information, inherently enabling it to generalize across various appearances effectively.
+								As shown below, DP3 consistently exhibits successful generalization to cubes of differing colors, while baseline methods could not achieve. It is noteworthy that the depth-based diffusion policy also does not incorporate color as input. However, due to its lower accuracy on the training object, the ability to generalize is also limited.
+							</p>
+								
+
+							<img src="./maniwhere_files/appearance_generalization.png" alt="Results" style="width: 96%; margin-top: -1em; margin-left:3%;margin-bottom:2%">
+
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:10%">
+									<p style="margin-top: 60%;">DP3</p>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:18%">
+									Red
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/red_ours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									Blue
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/blueours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									Yellow
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/yellow_ours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									Orange
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/orange_ours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									White
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/white_ours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:10%">
+									<p style="margin-top: 40%;">Diffusion Policy</p>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/red_image.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/blue_image.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/yellow_image.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<img src="./maniwhere_files/blank.png" alt="Results" style="width: 100%; margin-right: 5%;border: 5px solid #dc3545;
+										border-radius: 5px;">
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/white_image.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:10%">
+									<p style="margin-top: 30%;">Diffusion Policy (Depth)</p>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/red_depth.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/blue_depth.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/yellow_depth.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/orange_depth.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_appearance/white_depth.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+							<p style="font-size:small; text-align:right">
+								*One video is not recorded due to an emergent shut down.
+							</p>
+						
+							<h3 style="margin-top: 3%; margin-bottom: 1%;">Instance Generalization</h3>
+							<p>Achieving generalization across diverse instances, which vary in shape, size, and appearance, presents a significantly greater challenge compared to mere appearance generalization.
+								As shown below, DP3 effectively manages a wide range of everyday objects. This success can be primarily attributed to the inherent characteristics of point clouds.
+								Specifically, the use of point clouds allows for policies that are less prone to confusion, particularly when these point clouds are downsampled.</p>
+
+							<img src="./maniwhere_files/instance.png" alt="Results" style="width: 90%; margin-top: -1em; margin-left:8%;margin-bottom:2%">
+
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:10%">
+									<p style="margin-top: 60%;">DP3</p>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:18%">
+									Mouse
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/mouse_ours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									Espeon
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/cat_ours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									Cup
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/latte_ours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									Mug
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/cup_ours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									Hand
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/hand_ours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:10%">
+									<p style="margin-top: 40%;">Diffusion Policy</p>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/moude_image.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/cat_image.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/latte_image.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/cup_image.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/hand_image.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:10%">
+									<p style="margin-top: 30%;">Diffusion Policy (Depth)</p>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/mouse_depth.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/cat_depth.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/latte_depth.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/cup_depth.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 18%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_instance/hand_depth.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+
+							<h3 style="margin-top: 3%; margin-bottom: 1%;">View Generalization</h3>
+							<p>Generalizing image-based methods across different views is notably challenging, and acquiring training data from multiple views can be time-consuming and costly.
+								We show that DP3 effectively addresses this generalization problem when the camera views are altered slightly.</p>
+
+							<img src="./maniwhere_files/view_gen.png" alt="Results" style="width: 97%; margin-top: -1em; margin-left:4.5%;margin-bottom:2%">
+
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:10%">
+									<p style="margin-top: 110%;">DP3</p>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:30%">
+									View 1
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_view/1/ours/view-1-ours.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 30%">
+									View 2
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_view/2/ours/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 30%">
+									View 3
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_success" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_view/3/ours/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:10%">
+									<p style="margin-top: 110%;">Diffusion Policy</p>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:30%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_view/1/image/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 30%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_view/2/image/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 30%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_view/3/image/view-3-image.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+
+							<div class="row 50% uniform" style="width: 100%;">
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:10%">
+									<p style="margin-top: 80%;">Diffusion Policy (Depth)</p>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width:30%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_view/1/depth/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 30%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_view/2/depth/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+								<div class="2u" style="font-size: 1em; line-height: 1.5em; text-align: center; width: 30%">
+									<span class="image fit" style="margin-bottom: 0em;">
+										<video class="videostyle_with_border_failure" autoplay="" loop="" muted="" playsinline="" style="width: 100%; margin-right: 5%;" preload="metadata"><source src="videos/gen_view/3/depth/video.mp4" type="video/mp4"> </video>
+									</span>
+								</div>
+							</div>
+
+
+						<hr style="margin-top: 1em;">
+
+
+					</section>
+			</div>
+
+		
+
+		<!-- Scripts -->
+			<script src="./maniwhere_files/jquery.min.js"></script>
+			<script src="./maniwhere_files/jquery.poptrox.min.js"></script>
+			<script src="./maniwhere_files/skel.min.js"></script>
+			<script src="./maniwhere_files/util.js"></script>
+			<script src="./maniwhere_files/main.js"></script>
+			<script src="./maniwhere_files/dp3.js"></script>
+	</main>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration><div id="aiknowledge_pdf_auto_upload" style="position: fixed; top: 8px; right: 8px; z-index: 9999; background-color: white;"><template shadowrootmode="open"><link rel="stylesheet" href="chrome-extension://nchidjaafkcjdgdbbdpkpokodiehhcdg/content-script/style.css"><div data-v-app=""><main class="content-script-container" data-v-f5c2522d="" style="display: none;"><div class="banner neutral-10-b" data-v-f5c2522d=""><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODUiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCA4NSAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDEwLjEzODJMMy44Mzk3MiAzLjkzMzRDNC42MzIwMyAyLjY1Mjg2IDYuMDIxNzggMS44NzUgNy41MTY4NiAxLjg3NUMxMC45MjI4IDEuODc1IDEyLjk5OTEgNS42NTg2MyAxMS4xOTQgOC41NzU1N0wxMC4zNTcyIDkuOTI3NzVMMTUuMjAxIDE4LjQwMUgxMi43NTg4TDkuMDg3NyAxMS45NzkyTDYuNDMwMTQgMTYuMjczNUgxMC4zNDU2TDExLjQzNCAxOC40MDEzSDUuMTEzODJWMTguNDAwNkw1LjExMzQyIDE4LjQwMTJMMCAxMC4xMzgyWk03Ljg5NjU0IDkuODkwMDdINy44OTM0NEw3Ljg5NDkzIDkuODkyNjdMNS4xMTM4OSAxNC4zODY1TDIuNDg0ODUgMTAuMTM4MUw1LjYyNjcgNS4wNjEwMkM2LjAzNjgyIDQuMzk4MjMgNi43NDM2MyA0LjAwMjY1IDcuNTE3MzMgNC4wMDI2NUM4LjcwMjczIDQuMDAyNjUgOS4yNzU5NCA0LjgxNDAyIDkuNDY3MyA1LjE2Mjc5QzkuNjU4ODQgNS41MTE3NCAxMC4wMzYxIDYuNDMyNjkgOS40MDc5NiA3LjQ0NzhMNy44OTY1NCA5Ljg5MDA3WiIgZmlsbD0iIzFGNzFFMCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIwLjA5NDMgNS40MzI1QzIxLjQ3NDYgNS40MzI1IDIyLjUyODIgNS42ODgwNyAyMy4yNTUxIDYuMTk5MjFDMjMuOTkxMyA2LjcxMDM1IDI0LjM1OTMgNy40OTEgMjQuMzU5MyA4LjU0MTE2QzI0LjM1OTMgOS44NTE1MyAyMy43MTk4IDEwLjczOTEgMjIuNDQwOCAxMS4yMDM3QzIyLjYxNTYgMTEuNDE3NSAyMi44MTM0IDExLjY3NzcgMjMuMDM0MyAxMS45ODQ0QzIzLjI1NTEgMTIuMjkxMSAyMy40ODA2IDEyLjYyNTYgMjMuNzEwNiAxMi45ODgxQzIzLjk0MDcgMTMuMzQxMiAyNC4xNjE1IDEzLjcwODMgMjQuMzczMiAxNC4wODkzQzI0LjU4NDggMTQuNDYxMSAyNC43NzM0IDE0LjgyODIgMjQuOTM5MSAxNS4xOTA2SDIyLjk5MjlDMjIuODE4MSAxNC44NTYxIDIyLjYyOTQgMTQuNTIxNSAyMi40MjcgMTQuMTg2OUMyMi4yMjQ1IDEzLjg0MzEgMjIuMDE3NSAxMy41MTMyIDIxLjgwNTkgMTMuMTk3MkMyMS42MDM0IDEyLjg3MTkgMjEuNDAxIDEyLjU2OTkgMjEuMTk4NSAxMi4yOTExQzIwLjk5NjEgMTIuMDAzIDIwLjgwNzUgMTEuNzQ3NCAyMC42MzI2IDExLjUyNDRDMjAuNTAzOCAxMS41MzM2IDIwLjM5MzQgMTEuNTM4MyAyMC4zMDE0IDExLjUzODNDMjAuMjA5MyAxMS41MzgzIDIwLjEyMTkgMTEuNTM4MyAyMC4wMzkxIDExLjUzODNIMTkuMTk3MVYxNS4xOTA2SDE3LjQ1OFY1LjY2OTQ4QzE3Ljg4MTMgNS41NzY1NSAxOC4zMzIyIDUuNTE2MTQgMTguODEwNyA1LjQ4ODI2QzE5LjI4OTIgNS40NTEwOSAxOS43MTcgNS40MzI1IDIwLjA5NDMgNS40MzI1Wk0yMC4yMTg1IDYuOTUxOThDMTkuODUwNSA2Ljk1MTk4IDE5LjUxIDYuOTY1OTIgMTkuMTk3MSA2Ljk5MzhWMTAuMTE2NEgxOS45NTYzQzIwLjM3OTYgMTAuMTE2NCAyMC43NTIyIDEwLjA5MzIgMjEuMDc0MyAxMC4wNDY3QzIxLjM5NjQgMTAuMDAwMiAyMS42NjMyIDkuOTE2NTkgMjEuODc0OSA5Ljc5NTc3QzIyLjA5NTcgOS42NzQ5NiAyMi4yNjEzIDkuNTEyMzIgMjIuMzcxOCA5LjMwNzg3QzIyLjQ4MjIgOS4xMDM0MSAyMi41Mzc0IDguODQzMTkgMjIuNTM3NCA4LjUyNzIyQzIyLjUzNzQgOC4yMjk4MyAyMi40ODIyIDcuOTc4OSAyMi4zNzE4IDcuNzc0NDVDMjIuMjYxMyA3LjU2OTk5IDIyLjEwMDMgNy40MDczNiAyMS44ODg3IDcuMjg2NTRDMjEuNjg2MiA3LjE2NTczIDIxLjQ0MjQgNy4wODIwOSAyMS4xNTcxIDcuMDM1NjJDMjAuODcxOSA2Ljk3OTg2IDIwLjU1OSA2Ljk1MTk4IDIwLjIxODUgNi45NTE5OFpNMjUuNjE1NiAxMS41ODAxQzI1LjYxNTYgMTAuOTM4OSAyNS43MDc2IDEwLjM3NjYgMjUuODkxNiA5Ljg5MzM1QzI2LjA4NDggOS40MTAwOSAyNi4zMzc5IDkuMDEwNDggMjYuNjUwOCA4LjY5NDVDMjYuOTYzNiA4LjM2OTIzIDI3LjMyMjUgOC4xMjc2IDI3LjcyNzQgNy45Njk2MUMyOC4xMzIyIDcuODAyMzMgMjguNTQ2MyA3LjcxODY5IDI4Ljk2OTYgNy43MTg2OUMyOS45NjM0IDcuNzE4NjkgMzAuNzM2NCA4LjAzMDAyIDMxLjI4ODUgOC42NTI2OEMzMS44NDk4IDkuMjc1MzQgMzIuMTMwNCAxMC4yMDQ3IDMyLjEzMDQgMTEuNDQwN0MzMi4xMzA0IDExLjUzMzYgMzIuMTI1OCAxMS42NDA1IDMyLjExNjYgMTEuNzYxM0MzMi4xMTY2IDExLjg3MjkgMzIuMTEyIDExLjk3NTEgMzIuMTAyOCAxMi4wNjhIMjcuMzQwOUMyNy4zODY5IDEyLjY1MzUgMjcuNTg5MyAxMy4xMDg5IDI3Ljk0ODIgMTMuNDM0MkMyOC4zMTYzIDEzLjc1MDEgMjguODQ1NCAxMy45MDgxIDI5LjUzNTUgMTMuOTA4MUMyOS45NDA0IDEzLjkwODEgMzAuMzA4NSAxMy44NzA5IDMwLjYzOTcgMTMuNzk2NkMzMC45ODAyIDEzLjcyMjMgMzEuMjQ3MSAxMy42NDMzIDMxLjQ0MDMgMTMuNTU5NkwzMS42NjExIDE0LjkzOTdDMzEuNTY5MSAxNC45ODYyIDMxLjQ0MDMgMTUuMDM3MyAzMS4yNzQ3IDE1LjA5M0MzMS4xMTgyIDE1LjEzOTUgMzAuOTM0MiAxNS4xODEzIDMwLjcyMjYgMTUuMjE4NUMzMC41MjAxIDE1LjI2NSAzMC4yOTkzIDE1LjMwMjEgMzAuMDYgMTUuMzNDMjkuODIwOCAxNS4zNTc5IDI5LjU3NjkgMTUuMzcxOCAyOS4zMjg1IDE1LjM3MThDMjguNjkzNiAxNS4zNzE4IDI4LjE0MTQgMTUuMjc4OSAyNy42NzIyIDE1LjA5M0MyNy4yMDI5IDE0Ljg5NzkgMjYuODE2NCAxNC42MzMgMjYuNTEyNyAxNC4yOTg0QzI2LjIwOTEgMTMuOTU0NiAyNS45ODM2IDEzLjU1NSAyNS44MzY0IDEzLjA5OTZDMjUuNjg5MiAxMi42MzQ5IDI1LjYxNTYgMTIuMTI4NCAyNS42MTU2IDExLjU4MDFaTTMwLjQ2MDMgMTAuODI3M0MzMC40NjAzIDEwLjU5NSAzMC40MjgxIDEwLjM3NjYgMzAuMzYzNyAxMC4xNzIyQzMwLjI5OTMgOS45NTg0MSAzMC4yMDI3IDkuNzc3MTkgMzAuMDczOCA5LjYyODQ5QzI5Ljk1NDIgOS40NzA1IDI5LjgwMjQgOS4zNDk2OSAyOS42MTgzIDkuMjY2MDVDMjkuNDQzNSA5LjE3MzExIDI5LjIzMTkgOS4xMjY2NSAyOC45ODM0IDkuMTI2NjVDMjguNzI1OCA5LjEyNjY1IDI4LjUwMDMgOS4xNzc3NiAyOC4zMDcxIDkuMjc5OTlDMjguMTEzOCA5LjM3MjkyIDI3Ljk0ODIgOS40OTgzOCAyNy44MTAyIDkuNjU2MzdDMjcuNjgxNCA5LjgxNDM2IDI3LjU4MDEgOS45OTU1OCAyNy41MDY1IDEwLjJDMjcuNDMyOSAxMC40MDQ1IDI3LjM4MjMgMTAuNjEzNiAyNy4zNTQ3IDEwLjgyNzNIMzAuNDYwM1pNMzYuMjUyNiAxNC4wMDU3QzM2Ljc2NzkgMTQuMDA1NyAzNy4xNTkgMTMuOTc3OCAzNy40MjU5IDEzLjkyMjFWMTIuMDU0MUMzNy4zMzM4IDEyLjAyNjIgMzcuMjAwNCAxMS45OTgzIDM3LjAyNTYgMTEuOTcwNEMzNi44NTA3IDExLjk0MjYgMzYuNjU3NSAxMS45Mjg2IDM2LjQ0NTkgMTEuOTI4NkMzNi4yNjE4IDExLjkyODYgMzYuMDczMiAxMS45NDI2IDM1Ljg4IDExLjk3MDRDMzUuNjk1OSAxMS45OTgzIDM1LjUyNTcgMTIuMDQ5NCAzNS4zNjkzIDEyLjEyMzhDMzUuMjIyIDEyLjE5ODEgMzUuMTAyNCAxMi4zMDUgMzUuMDEwNCAxMi40NDQ0QzM0LjkxODQgMTIuNTc0NSAzNC44NzI0IDEyLjc0MTggMzQuODcyNCAxMi45NDYzQzM0Ljg3MjQgMTMuMzQ1OSAzNC45OTY2IDEzLjYyNDcgMzUuMjQ1IDEzLjc4MjdDMzUuNDkzNSAxMy45MzE0IDM1LjgyOTMgMTQuMDA1NyAzNi4yNTI2IDE0LjAwNTdaTTM2LjExNDYgNy43MTg2OUMzNi42NjY3IDcuNzE4NjkgMzcuMTMxNCA3Ljc4ODM5IDM3LjUwODcgNy45Mjc3OUMzNy44ODYgOC4wNjcxOSAzOC4xODUgOC4yNjIzNSAzOC40MDU5IDguNTEzMjhDMzguNjM1OSA4Ljc2NDIgMzguNzk2OSA5LjA3MDg4IDM4Ljg4ODkgOS40MzMzM0MzOC45OTAyIDkuNzg2NDggMzkuMDQwOCAxMC4xNzY4IDM5LjA0MDggMTAuNjA0M1YxNS4wMjMzQzM4Ljc4MzEgMTUuMDc5MSAzOC4zOTIxIDE1LjE0NDIgMzcuODY3NSAxNS4yMTg1QzM3LjM1MjIgMTUuMzAyMSAzNi43Njc5IDE1LjM0NCAzNi4xMTQ2IDE1LjM0NEMzNS42ODIxIDE1LjM0NCAzNS4yODY0IDE1LjMwMjEgMzQuOTI3NiAxNS4yMTg1QzM0LjU2ODcgMTUuMTM0OSAzNC4yNjA0IDE1LjAwMDEgMzQuMDAyOCAxNC44MTQyQzMzLjc1NDMgMTQuNjI4NCAzMy41NTY1IDE0LjM4NjcgMzMuNDA5MyAxNC4wODkzQzMzLjI3MTMgMTMuNzkyIDMzLjIwMjIgMTMuNDI0OSAzMy4yMDIyIDEyLjk4ODFDMzMuMjAyMiAxMi41Njk5IDMzLjI4MDUgMTIuMjE2NyAzMy40MzY5IDExLjkyODZDMzMuNjAyNSAxMS42NDA1IDMzLjgyMzQgMTEuNDA4MiAzNC4wOTk0IDExLjIzMTZDMzQuMzc1NSAxMS4wNDU3IDM0LjY5MjkgMTAuOTE1NiAzNS4wNTE4IDEwLjg0MTNDMzUuNDE5OSAxMC43NTc2IDM1LjgwMTcgMTAuNzE1OCAzNi4xOTc0IDEwLjcxNThDMzYuMzgxNSAxMC43MTU4IDM2LjU3NDcgMTAuNzI5OCAzNi43NzcxIDEwLjc1NzZDMzYuOTc5NiAxMC43NzYyIDM3LjE5NTggMTAuODEzNCAzNy40MjU5IDEwLjg2OTJWMTAuNTkwNEMzNy40MjU5IDEwLjM5NTIgMzcuNDAyOSAxMC4yMDkzIDM3LjM1NjggMTAuMDMyOEMzNy4zMTA4IDkuODU2MTggMzcuMjI4IDkuNzAyODQgMzcuMTA4NCA5LjU3MjczQzM2Ljk5OCA5LjQzMzMzIDM2Ljg0NjEgOS4zMjY0NSAzNi42NTI5IDkuMjUyMTFDMzYuNDY4OSA5LjE3Nzc2IDM2LjIzNDIgOS4xNDA1OCAzNS45NDkgOS4xNDA1OEMzNS41NjI1IDkuMTQwNTggMzUuMjA4MiA5LjE2ODQ3IDM0Ljg4NjIgOS4yMjQyM0MzNC41NjQxIDkuMjc5OTkgMzQuMzAxOSA5LjM0NTA0IDM0LjA5OTQgOS40MTkzOUwzMy44OTI0IDguMDUzMjVDMzQuMTA0IDcuOTc4OSAzNC40MTIzIDcuOTA0NTYgMzQuODE3MiA3LjgzMDIxQzM1LjIyMiA3Ljc1NTg2IDM1LjY1NDUgNy43MTg2OSAzNi4xMTQ2IDcuNzE4NjlaTTQyLjIwOTEgMTEuNTI0NEM0Mi4yMDkxIDEyLjI2NzggNDIuMzgzOSAxMi44NTMzIDQyLjczMzYgMTMuMjgwOEM0My4wODMzIDEzLjY5OSA0My41NjY0IDEzLjkwODEgNDQuMTgyOSAxMy45MDgxQzQ0LjQ0OTcgMTMuOTA4MSA0NC42NzUyIDEzLjg5ODggNDQuODU5MiAxMy44ODAyQzQ1LjA1MjQgMTMuODUyNCA0NS4yMDg5IDEzLjgyNDUgNDUuMzI4NSAxMy43OTY2VjkuNjE0NTVDNDUuMTgxMyA5LjUxMjMyIDQ0Ljk4MzQgOS40MTkzOSA0NC43MzUgOS4zMzU3NUM0NC40OTU3IDkuMjQyODEgNDQuMjM4MSA5LjE5NjM1IDQzLjk2MiA5LjE5NjM1QzQzLjM1NDcgOS4xOTYzNSA0Mi45MDg0IDkuNDA1NDUgNDIuNjIzMiA5LjgyMzY1QzQyLjM0NzEgMTAuMjQxOSA0Mi4yMDkxIDEwLjgwODggNDIuMjA5MSAxMS41MjQ0Wk00Ni45OTg2IDE0Ljk2NzZDNDYuNjY3NCAxNS4wNjk4IDQ2LjI0ODcgMTUuMTYyNyA0NS43NDI2IDE1LjI0NjRDNDUuMjQ1NyAxNS4zMyA0NC43MjEyIDE1LjM3MTggNDQuMTY5MSAxNS4zNzE4QzQzLjU5ODYgMTUuMzcxOCA0My4wODc5IDE1LjI4MzYgNDIuNjM3IDE1LjEwN0M0Mi4xODYxIDE0LjkzMDQgNDEuNzk5NiAxNC42Nzk1IDQxLjQ3NzUgMTQuMzU0MkM0MS4xNjQ3IDE0LjAxOTYgNDAuOTIwOCAxMy42MiA0MC43NDYgMTMuMTU1NEM0MC41ODA0IDEyLjY4MTQgNDAuNDk3NiAxMi4xNTE3IDQwLjQ5NzYgMTEuNTY2MkM0MC40OTc2IDEwLjk5IDQwLjU2NjYgMTAuNDY5NSA0MC43MDQ2IDEwLjAwNDlDNDAuODUxOCA5LjUzMDkxIDQxLjA2MzUgOS4xMjY2NSA0MS4zMzk1IDguNzkyMDhDNDEuNjE1NiA4LjQ1NzUyIDQxLjk1MTQgOC4yMDE5NSA0Mi4zNDcxIDguMDI1MzdDNDIuNzQyOCA3LjgzOTUgNDMuMTk4MyA3Ljc0NjU3IDQzLjcxMzYgNy43NDY1N0M0NC4wNjMyIDcuNzQ2NTcgNDQuMzcxNSA3Ljc4ODM5IDQ0LjYzODQgNy44NzIwM0M0NC45MDUyIDcuOTU1NjcgNDUuMTM1MyA4LjA0ODYgNDUuMzI4NSA4LjE1MDgzTDQ1LjMzMTggNC4zOTIwOUw0Ni45OTg2IDQuMzczMDVWMTQuOTY3NlpNNTEuNzIwMSA1LjQzMjVDNTMuMTA5NSA1LjQzMjUgNTQuMTcyMyA1LjY4ODA3IDU0LjkwODUgNi4xOTkyMUM1NS42NTM4IDYuNzEwMzUgNTYuMDI2NSA3LjUwOTU5IDU2LjAyNjUgOC41OTY5MkM1Ni4wMjY1IDkuMTYzODIgNTUuOTI1MyA5LjY1MTcyIDU1LjcyMjggMTAuMDYwNkM1NS41Mjk2IDEwLjQ2MDMgNTUuMjQ0MyAxMC43OTAyIDU0Ljg2NzEgMTEuMDUwNEM1NC40ODk4IDExLjMwMTMgNTQuMDI5NyAxMS40ODcyIDUzLjQ4NjggMTEuNjA4QzUyLjk0MzkgMTEuNzI4OCA1Mi4zMjI4IDExLjc4OTIgNTEuNjIzNCAxMS43ODkySDUwLjc1MzlWMTUuMTkwNkg0OS4wMTQ3VjUuNjY5NDhDNDkuNDE5NiA1LjU3NjU1IDQ5Ljg2NTkgNS41MTYxNCA1MC4zNTM2IDUuNDg4MjZDNTAuODUwNSA1LjQ1MTA5IDUxLjMwNiA1LjQzMjUgNTEuNzIwMSA1LjQzMjVaTTUxLjg0NDMgNi45NTE5OEM1MS40MDI2IDYuOTUxOTggNTEuMDM5MSA2Ljk2NTkyIDUwLjc1MzkgNi45OTM4VjEwLjI4MzdINTEuNTk1OEM1Mi40MzMyIDEwLjI4MzcgNTMuMDc3MyAxMC4xNjc1IDUzLjUyODIgOS45MzUxN0M1My45NzkxIDkuNjkzNTUgNTQuMjA0NSA5LjI0MjgxIDU0LjIwNDUgOC41ODI5OEM1NC4yMDQ1IDguMjY3IDU0LjE0NDcgOC4wMDIxNCA1NC4wMjUxIDcuNzg4MzlDNTMuOTA1NSA3LjU3NDY0IDUzLjczOTggNy40MDczNiA1My41MjgyIDcuMjg2NTRDNTMuMzE2NiA3LjE2NTczIDUzLjA2MzUgNy4wODIwOSA1Mi43NjkxIDcuMDM1NjJDNTIuNDgzOCA2Ljk3OTg2IDUyLjE3NTUgNi45NTE5OCA1MS44NDQzIDYuOTUxOThaTTU5LjY1NCAxNC4wMDU3QzYwLjE2OTMgMTQuMDA1NyA2MC41NjAzIDEzLjk3NzggNjAuODI3MiAxMy45MjIxVjEyLjA1NDFDNjAuNzM1MiAxMi4wMjYyIDYwLjYwMTcgMTEuOTk4MyA2MC40MjY5IDExLjk3MDRDNjAuMjUyMSAxMS45NDI2IDYwLjA1ODggMTEuOTI4NiA1OS44NDcyIDExLjkyODZDNTkuNjYzMiAxMS45Mjg2IDU5LjQ3NDUgMTEuOTQyNiA1OS4yODEzIDExLjk3MDRDNTkuMDk3MyAxMS45OTgzIDU4LjkyNyAxMi4wNDk0IDU4Ljc3MDYgMTIuMTIzOEM1OC42MjM0IDEyLjE5ODEgNTguNTAzNyAxMi4zMDUgNTguNDExNyAxMi40NDQ0QzU4LjMxOTcgMTIuNTc0NSA1OC4yNzM3IDEyLjc0MTggNTguMjczNyAxMi45NDYzQzU4LjI3MzcgMTMuMzQ1OSA1OC4zOTc5IDEzLjYyNDcgNTguNjQ2NCAxMy43ODI3QzU4Ljg5NDggMTMuOTMxNCA1OS4yMzA3IDE0LjAwNTcgNTkuNjU0IDE0LjAwNTdaTTU5LjUxNTkgNy43MTg2OUM2MC4wNjggNy43MTg2OSA2MC41MzI3IDcuNzg4MzkgNjAuOTEgNy45Mjc3OUM2MS4yODczIDguMDY3MTkgNjEuNTg2MyA4LjI2MjM1IDYxLjgwNzIgOC41MTMyOEM2Mi4wMzcyIDguNzY0MiA2Mi4xOTgzIDkuMDcwODggNjIuMjkwMyA5LjQzMzMzQzYyLjM5MTUgOS43ODY0OCA2Mi40NDIxIDEwLjE3NjggNjIuNDQyMSAxMC42MDQzVjE1LjAyMzNDNjIuMTg0NSAxNS4wNzkxIDYxLjc5MzQgMTUuMTQ0MiA2MS4yNjg5IDE1LjIxODVDNjAuNzUzNiAxNS4zMDIxIDYwLjE2OTMgMTUuMzQ0IDU5LjUxNTkgMTUuMzQ0QzU5LjA4MzUgMTUuMzQ0IDU4LjY4NzggMTUuMzAyMSA1OC4zMjg5IDE1LjIxODVDNTcuOTcgMTUuMTM0OSA1Ny42NjE4IDE1LjAwMDEgNTcuNDA0MSAxNC44MTQyQzU3LjE1NTcgMTQuNjI4NCA1Ni45NTc4IDE0LjM4NjcgNTYuODEwNiAxNC4wODkzQzU2LjY3MjYgMTMuNzkyIDU2LjYwMzYgMTMuNDI0OSA1Ni42MDM2IDEyLjk4ODFDNTYuNjAzNiAxMi41Njk5IDU2LjY4MTggMTIuMjE2NyA1Ni44MzgyIDExLjkyODZDNTcuMDAzOCAxMS42NDA1IDU3LjIyNDcgMTEuNDA4MiA1Ny41MDA3IDExLjIzMTZDNTcuNzc2OCAxMS4wNDU3IDU4LjA5NDMgMTAuOTE1NiA1OC40NTMxIDEwLjg0MTNDNTguODIxMiAxMC43NTc2IDU5LjIwMzEgMTAuNzE1OCA1OS41OTg4IDEwLjcxNThDNTkuNzgyOCAxMC43MTU4IDU5Ljk3NiAxMC43Mjk4IDYwLjE3ODUgMTAuNzU3NkM2MC4zODA5IDEwLjc3NjIgNjAuNTk3MSAxMC44MTM0IDYwLjgyNzIgMTAuODY5MlYxMC41OTA0QzYwLjgyNzIgMTAuMzk1MiA2MC44MDQyIDEwLjIwOTMgNjAuNzU4MiAxMC4wMzI4QzYwLjcxMjIgOS44NTYxOCA2MC42Mjk0IDkuNzAyODQgNjAuNTA5NyA5LjU3MjczQzYwLjM5OTMgOS40MzMzMyA2MC4yNDc1IDkuMzI2NDUgNjAuMDU0MiA5LjI1MjExQzU5Ljg3MDIgOS4xNzc3NiA1OS42MzU2IDkuMTQwNTggNTkuMzUwMyA5LjE0MDU4QzU4Ljk2MzggOS4xNDA1OCA1OC42MDk2IDkuMTY4NDcgNTguMjg3NSA5LjIyNDIzQzU3Ljk2NTQgOS4yNzk5OSA1Ny43MDMyIDkuMzQ1MDQgNTcuNTAwNyA5LjQxOTM5TDU3LjI5MzcgOC4wNTMyNUM1Ny41MDUzIDcuOTc4OSA1Ny44MTM2IDcuOTA0NTYgNTguMjE4NSA3LjgzMDIxQzU4LjYyMzQgNy43NTU4NiA1OS4wNTU4IDcuNzE4NjkgNTkuNTE1OSA3LjcxODY5Wk02OS4wODg3IDExLjU4MDFDNjkuMDg4NyAxMC44MjczIDY4LjkxODUgMTAuMjQxOSA2OC41NzggOS44MjM2NUM2OC4yNDY3IDkuNDA1NDUgNjcuNzA4NCA5LjE5NjM1IDY2Ljk2MzEgOS4xOTYzNUM2Ni44MDY2IDkuMTk2MzUgNjYuNjQxIDkuMjA1NjQgNjYuNDY2MiA5LjIyNDIzQzY2LjMwMDYgOS4yMzM1MiA2Ni4xMzQ5IDkuMjYxNCA2NS45NjkzIDkuMzA3ODdWMTMuNDc2QzY2LjExNjUgMTMuNTc4MiA2Ni4zMDk4IDEzLjY3NTggNjYuNTQ5IDEzLjc2ODdDNjYuNzk3NCAxMy44NTI0IDY3LjA1OTcgMTMuODk0MiA2Ny4zMzU4IDEzLjg5NDJDNjcuOTQzMSAxMy44OTQyIDY4LjM4NDggMTMuNjg1MSA2OC42NjA4IDEzLjI2NjlDNjguOTQ2MSAxMi44NDg3IDY5LjA4ODcgMTIuMjg2NCA2OS4wODg3IDExLjU4MDFaTTcwLjgwMDIgMTEuNTUyMkM3MC44MDAyIDEyLjEwOTggNzAuNzI2NiAxMi42MjEgNzAuNTc5NCAxMy4wODU3QzcwLjQ0MTQgMTMuNTUwMyA3MC4yMzg5IDEzLjk0OTkgNjkuOTcyMSAxNC4yODQ1QzY5LjcwNTIgMTQuNjE5MSA2OS4zNjkzIDE0Ljg3OTMgNjguOTY0NSAxNS4wNjUyQzY4LjU2ODggMTUuMjUxIDY4LjExNzkgMTUuMzQ0IDY3LjYxMTggMTUuMzQ0QzY3LjI3MTMgMTUuMzQ0IDY2Ljk1ODUgMTUuMzAyMSA2Ni42NzMyIDE1LjIxODVDNjYuMzg4IDE1LjEzNDkgNjYuMTUzMyAxNS4wNDE5IDY1Ljk2OTMgMTQuOTM5N1YxNy43Njk2SDY0LjI5OTJWOC4xMzY4OUM2NC42Mzk2IDguMDQzOTYgNjUuMDU4MyA3Ljk1NTY3IDY1LjU1NTIgNy44NzIwM0M2Ni4wNTIxIDcuNzg4MzkgNjYuNTc2NiA3Ljc0NjU3IDY3LjEyODcgNy43NDY1N0M2Ny42OTkyIDcuNzQ2NTcgNjguMjA5OSA3LjgzNDg2IDY4LjY2MDggOC4wMTE0M0M2OS4xMTE3IDguMTg4MDEgNjkuNDkzNiA4LjQ0MzU4IDY5LjgwNjQgOC43NzgxNEM3MC4xMjg1IDkuMTAzNDEgNzAuMzcyMyA5LjUwMzAzIDcwLjUzOCA5Ljk3N0M3MC43MTI4IDEwLjQ0MTcgNzAuODAwMiAxMC45NjY3IDcwLjgwMDIgMTEuNTUyMlpNNzEuOTMzIDExLjU4MDFDNzEuOTMzIDEwLjkzODkgNzIuMDI1IDEwLjM3NjYgNzIuMjA5IDkuODkzMzVDNzIuNDAyMyA5LjQxMDA5IDcyLjY1NTMgOS4wMTA0OCA3Mi45NjgyIDguNjk0NUM3My4yODEgOC4zNjkyMyA3My42Mzk5IDguMTI3NiA3NC4wNDQ4IDcuOTY5NjFDNzQuNDQ5NyA3LjgwMjMzIDc0Ljg2MzcgNy43MTg2OSA3NS4yODcgNy43MTg2OUM3Ni4yODA4IDcuNzE4NjkgNzcuMDUzOCA4LjAzMDAyIDc3LjYwNTkgOC42NTI2OEM3OC4xNjcyIDkuMjc1MzQgNzguNDQ3OCAxMC4yMDQ3IDc4LjQ0NzggMTEuNDQwN0M3OC40NDc4IDExLjUzMzYgNzguNDQzMiAxMS42NDA1IDc4LjQzNCAxMS43NjEzQzc4LjQzNCAxMS44NzI5IDc4LjQyOTQgMTEuOTc1MSA3OC40MjAyIDEyLjA2OEg3My42NTgzQzczLjcwNDMgMTIuNjUzNSA3My45MDY4IDEzLjEwODkgNzQuMjY1NiAxMy40MzQyQzc0LjYzMzcgMTMuNzUwMSA3NS4xNjI4IDEzLjkwODEgNzUuODUyOSAxMy45MDgxQzc2LjI1NzggMTMuOTA4MSA3Ni43ODE0IDEzLjg3NjggNzcuMTEyNiAxMy44MDI0Qzc3LjQ1MzEgMTMuNzI4MSA3Ny44NzIxIDEzLjYyMjYgNzguMDY1NCAxMy41Mzg5VjE0Ljg5NTZDNzcuOTczNCAxNC45NDIxIDc3Ljc1NzcgMTUuMDM3MyA3Ny41OTIxIDE1LjA5M0M3Ny40MzU2IDE1LjEzOTUgNzcuMjUxNiAxNS4xODEzIDc3LjA0IDE1LjIxODVDNzYuODM3NSAxNS4yNjUgNzYuNjE2NyAxNS4zMDIxIDc2LjM3NzQgMTUuMzNDNzYuMTM4MiAxNS4zNTc5IDc1Ljg5NDMgMTUuMzcxOCA3NS42NDU5IDE1LjM3MThDNzUuMDExIDE1LjM3MTggNzQuNDU4OSAxNS4yNzg5IDczLjk4OTYgMTUuMDkzQzczLjUyMDMgMTQuODk3OSA3My4xMzM4IDE0LjYzMyA3Mi44MzAxIDE0LjI5ODRDNzIuNTI2NSAxMy45NTQ2IDcyLjMwMSAxMy41NTUgNzIuMTUzOCAxMy4wOTk2QzcyLjAwNjYgMTIuNjM0OSA3MS45MzMgMTIuMTI4NCA3MS45MzMgMTEuNTgwMVpNNzYuNzc3NyAxMC44MjczQzc2Ljc3NzcgMTAuNTk1IDc2Ljc0NTUgMTAuMzc2NiA3Ni42ODExIDEwLjE3MjJDNzYuNjE2NyA5Ljk1ODQxIDc2LjUyMDEgOS43NzcxOSA3Ni4zOTEyIDkuNjI4NDlDNzYuMjcxNiA5LjQ3MDUgNzYuMTE5OCA5LjM0OTY5IDc1LjkzNTcgOS4yNjYwNUM3NS43NjA5IDkuMTczMTEgNzUuNTQ5MyA5LjEyNjY1IDc1LjMwMDggOS4xMjY2NUM3NS4wNDMyIDkuMTI2NjUgNzQuODE3NyA5LjE3Nzc2IDc0LjYyNDUgOS4yNzk5OUM3NC40MzEzIDkuMzcyOTIgNzQuMjY1NiA5LjQ5ODM4IDc0LjEyNzYgOS42NTYzN0M3My45OTg4IDkuODE0MzYgNzMuODk3NSA5Ljk5NTU4IDczLjgyMzkgMTAuMkM3My43NTAzIDEwLjQwNDUgNzMuNjk5NyAxMC42MTM2IDczLjY3MjEgMTAuODI3M0g3Ni43Nzc3Wk04NC40MzM0IDkuNDM0NzZDODQuMjk1NCA5LjM4ODMgODMuOTIyNyA5LjI5ODU3IDgzLjY3NDMgOS4yNTIxMUM4My40MzE2IDkuMTk2MzUgODMuMDQzOSA5LjE5NjM1IDgyLjcyMTkgOS4xOTYzNUM4Mi41Mzc4IDkuMTk2MzUgODIuMzQgOS4yMTQ5MyA4Mi4xMjg0IDkuMjUyMTFDODEuOTI1OSA5LjI4OTI4IDgxLjc4MzMgOS4zMjE4MSA4MS43MDA1IDkuMzQ5NjlWMTUuMTkwNkg4MC4wMzAzVjguMjQ4NDFDODAuMzUyNCA4LjEyNzYgODAuNzUyNyA4LjAxNjA4IDgxLjIzMTIgNy45MTM4NUM4MS43MTg5IDcuODAyMzMgODIuMjU3MiA3Ljc0NjU3IDgyLjg0NjEgNy43NDY1N0M4Mi45NTY1IDcuNzQ2NTcgODMuMDg1MyA3Ljc1NTg2IDgzLjIzMjYgNy43NzQ0NUM4My4zNzk4IDcuNzgzNzQgODMuNTI3IDcuODAyMzMgODMuNjc0MyA3LjgzMDIxQzgzLjgyMTUgNy44NDg4IDgzLjk2NDEgNy44NzY2OCA4NC4xMDIxIDcuOTEzODVDODQuMjQwMiA3Ljk0MTczIDg0LjM1MDYgNy45Njk2MSA4NC40MzM0IDcuOTk3NDlWOS40MzQ3NloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=" data-v-f5c2522d=""><div class="close-popup" data-v-f5c2522d=""><span role="img" aria-label="close" class="anticon anticon-close white-c" data-v-f5c2522d=""><svg focusable="false" class="" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></span></div></div><!----><div class="user-info neutral-4-b" data-v-f5c2522d=""><!----><div class="user-info-login idea-button blue-6-bg white-c" data-v-f5c2522d="">立即登录</div><div class="current-version" data-v-f5c2522d="">v1.2.5</div></div><!----></main></div></template></div></body></html>
