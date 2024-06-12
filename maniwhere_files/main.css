@@ -3159,7 +3159,7 @@ header {
 	),url('../images/teaser.png');
 
 
-    height: 50vh;
+    height: 100vh;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -3171,14 +3171,16 @@ header {
 
 header h1 {
     margin-bottom: 20px; /* 标题与按钮之间的间距 */
-	font-size: 4.5em;
-	/* color: #ffffff; */
-	/* 设置标题颜色为半透明 */
-	color: rgba(255, 255, 255, 0.9);
-    /* 设置标题位置 */
-	/* margin-top: 670px; */
-	margin-top: 10px;
+    font-size: 8.5em;
+    /* 设置标题颜色为渐变 */
+    background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #ff0000, #4b0082, #8b00ff);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-top: 10px;
 }
+
 
 
 
@@ -3225,4 +3227,11 @@ header h1 {
 .videostyle_with_border_failure {
     border: 5px solid #dc3545;
     border-radius: 5px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
