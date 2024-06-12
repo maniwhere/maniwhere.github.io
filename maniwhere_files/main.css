@@ -3156,7 +3156,7 @@ header {
 	background-image: linear-gradient(
 		rgba(0, 0, 0, 0.3), /* 这里是半透明的黑色覆盖层 */
 		rgba(0, 0, 0, 0.3) /* 你可以调整这些值以改变颜色和透明度 */
-	),url('../images/teaser.png');
+	),url('../images/teaser-min.png');
 
 
     height: 100vh;
