@@ -3173,11 +3173,12 @@ header h1 {
     margin-bottom: 20px; /* 标题与按钮之间的间距 */
     font-size: 8.5em;
     /* 设置标题颜色为渐变 */
-    background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #ff0000, #4b0082, #8b00ff);
+	background: linear-gradient(to right, rgb(0, 201, 255), rgb(146, 254, 157));
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
     color: transparent;
+	filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
     margin-top: 10px;
 }
 
